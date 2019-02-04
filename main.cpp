@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+apsdnpoiasdnioasdnasdoidna
 using namespace std;
 class MESO
 {
