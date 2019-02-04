@@ -1,10 +1,18 @@
 #include <iostream>
 #include <string>
-apsdnpoiasdnioasdnasdoidna
+#include <bits/stdc++.h>
+
 using namespace std;
 class MESO
 {
-    //CONSTRUCTOR 1
+
+private:
+
+    int gramaza;
+    string vr_mesa;
+
+public:
+        //CONSTRUCTOR 1
             MESO()
             {
                 gramaza = 0;
@@ -16,14 +24,8 @@ class MESO
                     vr_mesa = m1.vr_mesa;
                     gramaza = m1.gramaza;
                 }
-private:
-
-    int gramaza;
-    string vr_mesa;
-
-public:
     friend bool odabir_meso(int meso,int gramaza);
-    friend void ispisi_obrok()
+    friend void ispisi_obrok();
     //GET GRAMAZU
                 int get_gramaza()
                 {
@@ -64,6 +66,7 @@ void set_vrmesa(int x)
 void ispisi_meso()
 {
     string x = vr_mesa + gramaza;
+
     cout << x;
 }
 
@@ -73,7 +76,12 @@ void ispisi_meso()
 
 class PRILOG
 {
-            //CONSTRUCTOR 1
+
+
+private:
+    string prilog;
+public:
+        //CONSTRUCTOR 1
             PRILOG()
                     {
                     prilog = "BEZ_PRILOGA";
@@ -85,12 +93,8 @@ class PRILOG
                     {
                 prilog = p1.prilog;
                     }
-
-private:
-    string prilog;
-public:
     friend bool odabir_prilog(int prilog);
-    friend void ispisi_obrok()
+    friend void ispisi_obrok();
     //SET PRILOG
             void set_prilog(int x)
             {
@@ -125,7 +129,8 @@ public:
             }
 
 };
-class OBROK : public MESO, public PRILOG
+//OBROK
+class OBROK
 {
     OBROK()
     {
@@ -135,11 +140,13 @@ private:
 
     string obrok;
 public:
+        MESO m;
+        PRILOG p;
         //ODABIR MESA
         bool odabir_meso(int meso,int gramaza)
         {
-        MESO::set_vrmesa(meso);
-        MESO::set_gramazu(gramaza);
+        m.set_vrmesa(meso);
+        m.set_gramazu(gramaza);
         if(gramaza < 0 ||  gramaza > 1000)
             return false;
         else
@@ -151,7 +158,7 @@ public:
         //ODABIR PRILOGA
         bool odabir_prilog(int prilog)
                 {
-                PRILOG::set_prilog(prilog);
+                p.set_prilog(prilog);
                 if(prilog == 4 && obrok == "Pocetak_odabira" )
                     return false;
                 else{
@@ -171,9 +178,9 @@ public:
         //ISPISI OBROK
         void ispisi_obrok()
         {
-            string meso = MESO::get_vrmesa();
-            string gramaza = MESO::get_gramaza();
-            string prilog = MESO::get_vrmesa();
+            string meso = m.get_vrmesa();
+            string gramaza = m.get_gramaza();
+            string prilog = p.get_prilog();
             cout << obrok <<":" << endl;
             cout << meso << " " << gramaza << " " << prilog<< endl;
         }
