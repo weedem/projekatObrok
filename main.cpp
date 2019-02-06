@@ -4,7 +4,8 @@
 #include <cmath>
 #include <time.h>
 #include <cstdlib>
-//NAPRAVI MENI POZOVI SVE FUNKCIJE
+
+
 using namespace std;
 
 //MESO
@@ -29,10 +30,10 @@ public:
                     vr_mesa = m1.vr_mesa;
                     gramaza = m1.gramaza;
                 }
-    friend bool odabir_meso(int meso,int gramaza);
-    friend void ispisi_obrok();
-    friend string get_meso();
-    friend int get_gramazaO();
+            friend bool odabir_meso(int meso,int gramaza);
+            friend void ispisi_obrok();
+            friend string get_meso();
+            friend int get_gramazaO();
 
             //GET GRAMAZU
                 int get_gramaza()
@@ -79,7 +80,7 @@ public:
 
 
 };
-//PRILOG
+    //PRILOG
 class PRILOG
 {
 private:
@@ -135,7 +136,7 @@ public:
             }
 
 };
-//OBROK
+    //OBROK
 class OBROK
 {
 
@@ -194,6 +195,7 @@ public:
         {
 
             obrok  = "Odabrano_Meso";
+            return true;
         }
         }
         //ODABIR PRILOGA
@@ -204,6 +206,7 @@ public:
                     return false;
                 else{
                     obrok = "Odabrano_Prilog";
+                    return true;
                     }
                 }
         //SPREMI
@@ -224,13 +227,83 @@ public:
             int gramaza = m.get_gramaza();
             string prilog = p.get_prilog();
             cout << obrok <<":" << endl;
-            cout << meso << " " << gramaza << " " << prilog<< endl;
+            cout << meso << " " << gramaza << "gr " << prilog<< endl;
         }
 };
+void meni();
+
 int main()
 {
-    cout <<
-    OBROK o1;
-    o
-    return 0;
+    OBROK o;
+    bool mesoIgrm;
+    int op, prlg, x ,gr;
+    string st, st1;
+    while(op != 6)
+    {
+    meni();
+    cin >> op;
+        switch (op)
+        {
+        case 1:
+
+            cout << "UNESITE BROJ VASEG MESA:" << endl;
+            cout << "1. SVINJETINA " << endl;
+            cout << "2. JUNETINA " << endl;
+            cout << "3. PILETINA " << endl;
+            cout << "4. BEZ MESA " << endl;
+            cin >> x;
+            cout << "UNESITE GRAMAZU MESA:" << endl;
+            cin >> gr;
+            mesoIgrm = o.odabir_meso(x,gr);
+            if(mesoIgrm == false)
+            {
+                cout << "GRAMAZA NEMOGUCA"  << endl;
+            }
+            break;
+
+        case 2:
+
+            cout << "UNESITE VAS PRILOG:" << endl;
+            cout << "1. RIZA " << endl;
+            cout << "2. POMFRIT " << endl;
+            cout << "3. PASULJ " << endl;
+            cout << "4. TESTENINA " << endl;
+            cout << "5. BEZ PRILOGA " << endl;
+            cin >> prlg;
+            o.odabir_prilog(prlg);
+            break;
+
+        case 3:
+            st1 = o.get_stanje();
+            if(st1 == "Pocetak_odabira")
+                cout << "NE MOZE NISTE NISTA IZABRALI" << endl;
+            o.spremi();
+            break;
+
+        case 4:
+            o.ispisi_obrok();
+            break;
+
+        case 5:
+            st = o.get_stanje();
+            cout << st <<  endl;
+            break;
+
+        case 6:
+            exit(0);
+        }
+    }
+
+}
+void meni()
+{
+    cout << "================= MEKSICKA =================" << endl << endl;
+    cout << "           ===  1. ODABIR MESA  ===          " << endl;
+    cout << "           ===  2. ODABIR PRILOGA  ===          " << endl;
+    cout << "           ===  3. SPREMI OBROK  ===          " << endl;
+    cout << "           ===  4. ISPISI OBROK  ===          " << endl;
+    cout << "           ===  5. ISPISI STANJE  ===          " << endl;
+    cout << "           ===  6. EXIT  ===          " << endl;
+    cout << "===========================================" << endl;
+
 }
